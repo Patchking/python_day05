@@ -1,0 +1,31 @@
+<!-- {% for b in data %}
+<a href="{{ b.book.url }}">{{ b.title }}</a>
+<a href="/list/{{b}}">{{ b }}</a>
+{% endfor %} -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Django File Upload Example</title>   
+    </head>
+    <body>
+    <!-- List of uploaded data -->
+    {% if data %}
+        <ul>
+        {% for document in data %}
+            <li><a href="/list/{{document}}">{{ document }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No data.</p>
+    {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form method = "post", enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit"> Submit</button>
+         </form>
+    </body>
+</html> 

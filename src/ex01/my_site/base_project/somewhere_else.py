@@ -18,3 +18,10 @@ def handle_uploaded_file(file) -> bool:
 
 def get_mediafile_list():
     return os.listdir(settings.MEDIA_ROOT)
+
+def getfile(filename):
+    filename = settings.MEDIA_ROOT / filename
+    if not os.path.exists(filename):
+        return (False, None)
+    with open(filename, "rb") as f:
+        return (True, f.read())
