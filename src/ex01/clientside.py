@@ -1,7 +1,7 @@
 import requests, argparse
 
 def post_file(filename: str):
-    lnk = "http://127.0.0.1:8000/push/"
+    lnk = "http://127.0.0.1:8000/list/"
     with open(filename, "rb") as f:
         files = {"file": (filename, f.read())}
 
@@ -9,7 +9,7 @@ def post_file(filename: str):
     return response
 
 def get_list():
-    lnk = "http://127.0.0.1:8000/list/"
+    lnk = "http://127.0.0.1:8000/clientside/"
     response = requests.get(lnk)
     return response
 
